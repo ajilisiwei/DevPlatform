@@ -1,6 +1,7 @@
 package com.ajilisiwei.devplatform.dao;
 
 import com.ajilisiwei.devplatform.pojo.User;
+import org.apache.ibatis.annotations.Param;
 
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +15,8 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    int checkUsername(String username);
+
+    User selectLongin(@Param("username") String username, @Param("password") String md5Password);
 }

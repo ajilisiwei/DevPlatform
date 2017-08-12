@@ -24,6 +24,17 @@
     from t_user
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="checkUsername" resultType="java.lang.Integer" parameterType="String">
+    select count(1) from t_user
+    where username=#{username}
+  </select>
+  <select id="selectLongin" resultMap="BaseResultMap" parameterType="map">
+    select
+    <include refid="Base_Column_List"/>
+    from t_user
+    where username=#{username}
+    and password=#{password}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from t_user
     where id = #{id,jdbcType=INTEGER}
